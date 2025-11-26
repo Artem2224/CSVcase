@@ -1,7 +1,7 @@
 import csv
+import argparse
 
-
-def calc(*paths):
+def calc(paths, report):
     result = {}
     for path in paths:
         with open(path, 'r') as file:
@@ -19,12 +19,19 @@ def calc(*paths):
                     result[position]['count'] += 1
     for key in result:
         result[key] = round(result[key]['performance_sum']/result[key]['count'], 2)
-    
-    with open('result.csv', 'w', newline='') as file:
-        writer = csv.writer(file,)
+    with open(f'{report}.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
         writer.writerow(['position', 'performance'])
         for pos, perf in result.items():
             writer.writerow([pos, perf])
 
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--files', nargs='+')
+    parser.add_argument('--report', nargs='?', const='performance', default='performance')
 
-a = calc('employees1.csv', 'employees2.csv')
+    args = parser.parse_args()
+    calc(args.files, args.report)
+
+if __name__ == '__main__':
+    main()
