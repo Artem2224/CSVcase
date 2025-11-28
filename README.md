@@ -23,6 +23,7 @@ python main.py --files employees1.csv employees2.csv --report performance
 
 ## Параметры запуска
 --files: один или несколько CSV-файлов с данными
+
 --report: название отчета (по-умолчанию performance)
 
 ## Пример запуска скрипта
