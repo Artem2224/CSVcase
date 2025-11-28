@@ -9,7 +9,7 @@
 
 ```bash
 python -m venv venv
-venv\Scripts\activate        # для Windows
+venv\Scripts\activate
 # или для Linux/macOS:
 # source venv/bin/activate
 pip install -r requirements.txt
